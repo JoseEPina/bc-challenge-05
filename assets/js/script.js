@@ -29,10 +29,13 @@ var startScheduler = function () {
 
       var taskTimeBlock = document.createElement("span");
       taskTimeBlock.className = "col-3";
-      taskTimeBlock.textContent = "HOur";
+
+      taskTimeBlock.textContent = moment(hour, "HH").format("h : mm a");
+
       var taskDescription = document.createElement("p");
       taskDescription.className = "col-6";
       taskDescription.textContent = "Dummy Task";
+
       var taskSaveIcon = document.createElement("span");
       taskSaveIcon.className = "col-3";
       taskSaveIcon.textContent = "Icon";
