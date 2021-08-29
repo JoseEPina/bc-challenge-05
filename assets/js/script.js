@@ -36,6 +36,17 @@ var startScheduler = function () {
       taskDescription.className = "col-6";
       taskDescription.textContent = "Dummy Task";
 
+      if (hour < moment().hour(19).format("H")) {
+         taskDescription.classList.add("past");
+         console.log(hour, "This is Past Due");
+      } else if (hour == moment().hour(19).format("H")) {
+         taskDescription.classList.add("present");
+         console.log(hour, "This is current");
+      } else {
+         taskDescription.classList.add("future");
+         console.log(hour, "This is Yet to be Completed");
+      }
+
       var taskSaveIcon = document.createElement("span");
       taskSaveIcon.className = "col-3";
       taskSaveIcon.textContent = "Icon";
