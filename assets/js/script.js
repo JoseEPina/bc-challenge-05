@@ -22,8 +22,7 @@ var updateClock = function () {
 };
 
 var buildDay = function () {
-   tasks = JSON.parse(localStorage.getItem("scheduler"));
-
+   var tempArray = [];
 
    for (var hour = START_TIME; hour < END_TIME; hour++) {
       var listItems = document.createElement("li");
@@ -36,6 +35,9 @@ var buildDay = function () {
       var taskDescription = document.createElement("p");
       taskDescription.className = setTaskStatusColor(hour);
 
+      taskDescription.textContent = tasks[hour - START_TIME];
+      tempArray.push(tasks[hour - START_TIME]);
+
       var taskSaveIcon = document.createElement("i");
       taskSaveIcon.className = "bi bi-save saveBtn col-2";
 
@@ -45,12 +47,13 @@ var buildDay = function () {
 
       listGroup.appendChild(listItems);
    }
+   tasks = tempArray;
 };
 
 function setTaskStatusColor(hour) {
-   if (hour < moment().hour(11).format("H")) {
+   if (hour < moment().format("H")) {
       return "past col-8";
-   } else if (hour == moment().hour(11).format("H")) {
+   } else if (hour == moment().format("H")) {
       return "present col-8";
    } else {
       return "future col-8";
@@ -61,12 +64,15 @@ var createUl = function () {
    var containerDiv = document.querySelector(".container");
    listGroup.className = "day-group";
    containerDiv.appendChild(listGroup);
-   console.log(containerDiv);
 };
 
 var startScheduler = function () {
    var timerStart = setInterval(updateClock, 1000);
 
+   tasks = JSON.parse(localStorage.getItem("scheduler"));
+   if (!tasks) {
+      tasks = [];
+   }
    createUl();
    buildDay();
 };
@@ -77,14 +83,11 @@ $(".day-group").on("click", "p", function () {
    var text = $(this) //
       .text() //
       .trim(); //
-   console.log(text);
    var textInput = $("<textarea>") //
       .addClass("form-control col-8") //
       .val(text); //
-   console.log(textInput);
 
    var status = $(this).taskDescription;
-   console.log("Printing Status: " + status);
 
    $(this).replaceWith(textInput);
 
@@ -104,13 +107,18 @@ $(".day-group").on("blur", "textarea", function () {
       .index(); //
 
    // Recreate the <p> element
+   var color = setTaskStatusColor(index + START_TIME);
    var taskP = $("<p>") //
-      .addClass(setTaskStatusColor(index + START_TIME)) //
+      .addClass(color) //
       .text(text); //
+
+   tasks[index] = text;
 
    // Replace textarea with <p> element
    $(this).replaceWith(taskP);
 });
 
 // Save Icon was clicked (with <span> element)
-$(".day-group").on("click", "i", function () {});
+$(".day-group").on("click", "i", function () {
+   localStorage.setItem("scheduler", JSON.stringify(tasks));
+});
