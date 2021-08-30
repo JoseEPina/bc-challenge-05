@@ -7,8 +7,8 @@ dateElement.innerHTML = moment().format("dddd, MMMM Do");
 hourElement.innerHTML = moment().format("h:mm:ss a");
 
 // Constant Variables to handle business hours
-const START_TIME = 13;
-const END_TIME = 22;
+const START_TIME = 9;
+const END_TIME = 18;
 
 // Variable to hold info to localStorage
 var tasks = {};
