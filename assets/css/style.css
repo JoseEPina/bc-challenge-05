@@ -8,9 +8,12 @@ textarea {
    background: transparent;
    border: none;
    resize: none;
-   color: #000000;
+   color: #000;
    border-left: 1px solid black;
-   padding: 10px;
+}
+
+.form-control {
+   padding: 25px 0px 0px 15px;
 }
 
 .jumbotron {
@@ -19,6 +22,7 @@ textarea {
    color: black;
    border-radius: 0;
    border-bottom: 10px solid black;
+   margin: 16px;
 }
 
 .description {
@@ -27,34 +31,65 @@ textarea {
 
 .time-block {
    text-align: center;
-   border-radius: 15px;
+   border-top-left-radius: 15px;
+   border-bottom-left-radius: 15px;
+}
+
+.day-group {
+   padding-inline-start: 5px;
+   padding-inline-end: 5px;
 }
 
 .row {
    white-space: pre-wrap;
    height: 80px;
    border-top: 1px solid white;
+   line-height: 78px;
 }
 
 .hour {
-   background-color: #ffffff;
-   color: #000000;
-   border-top: 1px dashed #000000;
+   background-color: #1c2574d7;
+   background-image: linear-gradient(180deg, #616bc2d7 0%, #361c74d7 52%, #390ca3d7 90%);
+   color: cornflowerblue;
+   font-weight: bold;
+}
+
+.row p {
+   margin: 0;
 }
 
 .past {
    background-color: #d3d3d3;
+   background-image: linear-gradient(180deg, #a0a0a0 0%, #464646 52%, #505050 90%);
+
+   transition: all 0.5s ease-out;
+   background-size: 1px 100px;
+   background-position: 0 -10px;
    color: white;
 }
 
 .present {
-   background-color: #ff6961;
+   background-color: #ea0028;
+   background-image: linear-gradient(180deg, #e75741 0%, #851a2c 52%, #ad0d0d 90%);
+   transition: all 0.5s ease-out;
+   background-size: 1px 100px;
+   background-position: 0 -10px;
    color: white;
 }
 
 .future {
-   background-color: #77dd77;
+   background-color: #065213;
+   background-image: linear-gradient(180deg, #5a9968 0%, #065213 52%, #177a3d 90%);
+   transition: all 0.5s ease-out;
+   background-size: 1px 100px;
+   background-position: 0 -10px;
    color: white;
+}
+
+.past:hover,
+.present:hover,
+.future:hover {
+   background-position: 1px -20px;
 }
 
 .saveBtn {
@@ -62,15 +97,54 @@ textarea {
    border-top-right-radius: 15px;
    border-bottom-right-radius: 15px;
    background-color: #1c2574d7;
-   color: white;
+   background-image: linear-gradient(180deg, #616bc2d7 0%, #361c74d7 52%, #390ca3d7 90%);
    text-align: center;
    font-size: 1.5rem;
    color: cornflowerblue;
-   line-height: 2;
 }
 
 .saveBtn:hover {
-   font-size: 20px;
    transition: all 0.3s ease-in-out;
    font-size: 2rem;
+   transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+   .display-3 {
+      font-size: 3rem;
+   }
+
+   .lead {
+      font-size: 1.2rem;
+   }
+}
+
+@media (max-width: 576px) {
+   .display-3 {
+      font-size: 2.5rem;
+   }
+
+   .lead {
+      font-size: 1.7rem;
+   }
+
+   .hour {
+      padding: 0;
+      font-size: medium;
+   }
+}
+
+@media (max-width: 360px) {
+   .display-3 {
+      font-size: 1.8rem;
+   }
+
+   .lead {
+      font-size: 1rem;
+   }
+
+   .hour {
+      padding: 0;
+      font-size: small;
+   }
 }

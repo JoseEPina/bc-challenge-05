@@ -1,5 +1,7 @@
 # bc-challenge-05
 
+This is a simple calendar application that allows a user to save events for each hour of the day. This app runs in the browser and features dynamically updated HTML and CSS powered by jQuery.
+
 ## User Story
 
 ```
@@ -25,3 +27,15 @@
 - WHEN I refresh the page
 - THEN the saved events persist
 ```
+
+The following animation demonstrates the application functionality:
+
+![code quiz](./assets/mock-up/mock-up.gif)
+
+### Review
+
+-  The URL of the functional, deployed application:
+-  https://joseepina.github.io/bc-challenge-05/
+
+-  The URL of the GitHub repository:
+-  https://github.com/JoseEPina/bc-challenge-05
